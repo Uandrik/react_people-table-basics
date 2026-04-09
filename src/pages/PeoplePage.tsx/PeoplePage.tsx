@@ -39,7 +39,10 @@ export const PeoplePage = () => {
 
         setPeople(prepearedPeople);
       })
-      .catch(() => setIsError(true))
+      .catch(() => {
+        setPeople([]);
+        setIsError(true);
+      })
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -50,13 +53,13 @@ export const PeoplePage = () => {
         <div className="box table-container">
           {isLoading && <Loader />}
 
-          {isError && (
+          {isError && !isLoading && (
             <p data-cy="peopleLoadingError" className="has-text-danger">
               Something went wrong
             </p>
           )}
 
-          {people?.length === 0 && !isLoading && (
+          {people?.length === 0 && !isLoading && !isError && (
             <p data-cy="noPeopleMessage">There are no people on the server</p>
           )}
 
