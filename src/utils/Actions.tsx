@@ -6,6 +6,6 @@ export const getPeople = () => {
       return response.json();
     })
     .catch(() => {
-      throw new Error('Error');
+      throw new Error('Error ');
     });
 };
