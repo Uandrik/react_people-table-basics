@@ -39,11 +39,7 @@ export const PeopleTable = ({ people }: { people: Person[] }) => {
             <td>{person.sex}</td>
             <td>{person.born}</td>
             <td>{person.died}</td>
-            <td
-              className={classNames({
-                'has-text-danger': person.sex === 'f',
-              })}
-            >
+            <td>
               {person.mother ? (
                 <PersonLink person={person.mother} />
               ) : person.motherName ? (
